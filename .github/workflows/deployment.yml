@@ -1,0 +1,16 @@
+name: Deployment
+
+on:
+  push:
+    branches:
+      - main
+ 
+
+jobs: 
+     deploy: 
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v4
+          - run: docker build . -t docker_test  # name of the build
+          - name: Docker login
+            run: echo "${{secrets.DOCKERHUB.PASSWORD}}" | docker login -u "${{secrets.DOCKERHUB.NAME}}" --password-stdin
