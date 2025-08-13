@@ -20,4 +20,10 @@ describe('App routes', () => {
     expect(res.status).toBe(200);
     expect(res.body).toEqual({ message: 'Data received', data: payload });
   });
+
+  it('GET /data -> 200 { message: "Data fetched successfully" }', async () => {
+    const res = await request(app).get('/data');
+    expect(res.status).toBe(200);
+    expect(res.body).toEqual({ message: 'Data fetched successfully' });
+  });
 });

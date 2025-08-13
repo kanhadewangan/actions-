@@ -1,4 +1,4 @@
-const express = require("express");
+ const express = require("express");
 const app = express();
 
 // Middleware for parsing JSON and form data
@@ -23,5 +23,9 @@ app.post("/data", (req, res) => {
     data: requestData,
   });
 });
-
+app.get("/data",(req,res)=>{
+    res.json({
+        message: "Data fetched successfully",
+    });
+})
 module.exports = app;
