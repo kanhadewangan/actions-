@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: docs-pod
+  labels:
+    app: docs
+spec:
+  containers:
+    - name: docs
+      image: docs:local #  # need to Change at Deployment
+      imagePullPolicy: IfNotPresent
+      ports:
+        - containerPort: 3000
+      env:
+        - name: PORT
+          value: "3000"
+      readinessProbe:
+        httpGet:
+          path: /health
+          port: 3000
+        initialDelaySeconds: 5
+        periodSeconds: 10
+      livenessProbe:
+        httpGet:
+          path: /health
+          port: 3000
+        initialDelaySeconds: 10
+        periodSeconds: 10

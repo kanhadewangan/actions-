@@ -1,0 +1,28 @@
+{
+  "name": "docs",
+  "version": "1.0.0",
+  "description": "Minimal Express app with Docker and Kubernetes manifests",
+  "private": true,
+  "type": "commonjs",
+  "main": "src/index.js",
+  "scripts": {
+  "start": "node src/index.js",
+  "dev": "node src/index.js",
+  "test": "jest",
+  "docker:build": "docker build -t docs:local .",
+  "docker:run": "docker run --rm -p 3000:3000 docs:local"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^7.0.0"
+  }
+}
